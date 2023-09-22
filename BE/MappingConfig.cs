@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BackEnd.Dtos.Hiking;
 using BackEnd.Dtos.UserDtos;
 using BackEnd.Models;
 
@@ -10,6 +11,8 @@ namespace BackEnd
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
+                //hikingdto to hiking
+                config.CreateMap<HikingUpsertDto, Hiking>().ReverseMap();
                 // mapping user
                 config.CreateMap<User, AuthenticateResponse>();
                 config.CreateMap<RegisterRequest, User>();
