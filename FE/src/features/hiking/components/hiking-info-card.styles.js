@@ -17,13 +17,13 @@ export const HikingTitle = styled(Text)`
   color: ${(props) => props.theme.colors.ui.success};
 `;
 
-export const HikingPageNumber = styled(Text)`
+export const HikingDifficultLevel = styled(Text)`
   font-family: ${(props) => props.theme.fonts.body};
   font-size: ${(props) => props.theme.fontSizes.body};
   color: ${(props) => props.theme.colors.brand.secondary};
 `;
 
-export const HikingAuthor = styled(Text)`
+export const HikingDate = styled(Text)`
   font-family: ${(props) => props.theme.fonts.body};
   font-size: ${(props) => props.theme.fontSizes.body};
   color: ${(props) => props.theme.colors.ui.secondary};
@@ -47,3 +47,5 @@ export const Section = styled.View`
   padding-right: ${(props) => props.theme.space[5]};
   justify-content: space-between;
 `;
+
+export const DeleteBtn = styled.Button``;
