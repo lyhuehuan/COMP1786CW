@@ -11,7 +11,8 @@ namespace BackEnd.Models
         public string Name { get; set; }
         [Required]
         public DateTime Time { get; set; }
-        public string Comment { get; set; }
+        [Required]
+        public string Description { get; set; }
         [Required]
         public int HikingId { get; set; }
         [ForeignKey("HikingId")]

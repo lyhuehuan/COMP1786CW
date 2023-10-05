@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using BackEnd;
 using BackEnd.Data;
-using BackEnd.Middleware;
 using BackEnd.Services;
 using BackEnd.Services.IServices;
 
@@ -21,15 +20,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IBookService, BookService>();
 //auto mapper config
 var mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddScoped<IJwtUtils, JwtUtils>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IObservationService, ObservationService>();
 builder.Services.AddScoped<IHikingService, HikingService>();
 builder.Services.AddCors(options =>
 {
@@ -53,8 +48,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("AllowAll");
-
-app.UseMiddleware<JwtMiddleware>();
 
 app.MapControllers();
 

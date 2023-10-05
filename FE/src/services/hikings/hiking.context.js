@@ -47,7 +47,7 @@ export const HikingContextProvider = ({ children }) => {
       });
   };
 
-  const creatHiking = (hiking) => {
+  const createHiking = (hiking) => {
     setIsLoading(true);
     create(hiking)
       .then((res) => {
@@ -115,8 +115,8 @@ export const HikingContextProvider = ({ children }) => {
       value={{
         loadHikings,
         loadHiking,
-        creatHiking,
-        updateHiking,
+        createHiking,
+        update: updateHiking,
         deleteHiking,
         hikings,
         hiking,

@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { Text } from "react-native";
 import SettingScreen from "../../features/setting/screens/setting.screens";
-import HikingScreen from "../../features/hiking/screens/hiking.screen";
+import { HikingNavigator } from "./hiking.navigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +33,7 @@ export const AppNavigator = () => (
     >
       <Tab.Screen
         name="Hiking"
-        component={HikingScreen}
+        component={HikingNavigator}
         options={{ headerShown: false }}
       />
       <Tab.Screen

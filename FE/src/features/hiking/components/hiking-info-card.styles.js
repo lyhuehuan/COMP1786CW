@@ -29,6 +29,18 @@ export const HikingDate = styled(Text)`
   color: ${(props) => props.theme.colors.ui.secondary};
 `;
 
+export const HikingLengthOfHike = styled(Text)`
+  font-family: ${(props) => props.theme.fonts.body};
+  font-size: ${(props) => props.theme.fontSizes.body};
+  color: ${(props) => props.theme.colors.ui.secondary};
+`;
+
+export const HikingDescription = styled(Text)`
+  font-family: ${(props) => props.theme.fonts.body};
+  font-size: ${(props) => props.theme.fontSizes.body};
+  color: ${(props) => props.theme.colors.ui.secondary};
+`;
+
 export const Info = styled.View`
   padding-left: ${(props) => props.theme.space[3]};
   padding-right: ${(props) => props.theme.space[3]};

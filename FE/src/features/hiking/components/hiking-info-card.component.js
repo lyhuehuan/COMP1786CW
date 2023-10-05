@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Alert, View } from "react-native";
+import { Alert, StyleSheet, TouchableOpacity, View, Text } from "react-native";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 
@@ -12,7 +12,8 @@ import {
   HikingTitle,
   HikingDate,
   HikingDifficultLevel,
-  DeleteBtn,
+  HikingLengthOfHike,
+  HikingDescription,
 } from "./hiking-info-card.styles";
 
 import { HikingContext } from "../../../services/hikings/hiking.context";
@@ -25,7 +26,7 @@ const images = [
   "https://media.glamourmagazine.co.uk/photos/643fc2efa8478149acdb8abf/16:9/w_1920,h_1080,c_limit/SOFT%20HIKING%20190423%20GS1692690_L.jpg",
 ];
 
-export const HikingInfoCard = ({ hiking = {} }) => {
+export const HikingInfoCard = ({ onUpdate, hiking = {} }) => {
   const ratingArray = Array.from(new Array(Math.floor(5)));
   let randomNumber = Math.floor(Math.random() * 4);
 
@@ -68,27 +69,61 @@ export const HikingInfoCard = ({ hiking = {} }) => {
           </HikingDate>
         </Section>
         <Section>
-          <HikingDate varient="body">
-            Date: {formatDate(hiking.date)}
-          </HikingDate>
+          <HikingLengthOfHike varient="body">
+            Length Of Hike: {hiking.lengthOfHike}
+          </HikingLengthOfHike>
           <HikingDifficultLevel varient="hint">
             Difficult Level: {hiking.difficultLevel}
           </HikingDifficultLevel>
         </Section>
         <Section>
-          <HikingDate varient="body">
-            Length Of Hike: {hiking.lengthOfHike}
-          </HikingDate>
-          <HikingDifficultLevel varient="hint">
-            Location: {hiking.location}
-          </HikingDifficultLevel>
+          <HikingDescription varient="body">
+            Description: {hiking.description}
+          </HikingDescription>
         </Section>
-        <DeleteBtn
-          onPress={onDelete}
-          title="Delete"
-          color="#FF0000"
-        ></DeleteBtn>
+        <View style={styles.container}>
+          <TouchableOpacity
+            onPress={() => onUpdate(hiking)}
+            style={styles.buttonUpdate}
+          >
+            <Text style={styles.buttonText}>Update</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => onDelete(hiking)}
+            style={styles.buttonDelete}
+          >
+            <Text style={styles.buttonText}>Delete</Text>
+          </TouchableOpacity>
+        </View>
       </Info>
     </HikingCard>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+  },
+  buttonUpdate: {
+    flex: 1,
+    backgroundColor: "orange",
+    padding: 10,
+    margin: 7,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  buttonDelete: {
+    flex: 1,
+    backgroundColor: "red",
+    padding: 10,
+    margin: 7,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "white",
+    fontWeight: "bold",
+  },
+});
